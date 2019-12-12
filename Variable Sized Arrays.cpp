@@ -15,42 +15,32 @@ int main() {
     
     string n_q;
     getline(cin, n_q);
-    //cout<<n_q<<endl;
-
+  
     vector<string> vect_n_q = split_string(n_q);
     int row=stoi(vect_n_q[0]);
     string new_input_line;
-    vector<vector<string>> vect_2D(row);
-    for(int i=0;i<vect_n_q.size();i++){
+    vector<string> vect_temp;
+    vector<vector<string>> vect_2D(row); // array sequences
+    for(int i=0;i<row;i++){
         getline(cin,new_input_line);
-        vector<string> vect_temp=split_string(new_input_line);
-        vect_2D[i]=vect_temp;
-    }
-
-    /*
-    for (int i = 0; i < row; i++) { 
-        for (int j = 0; j < vect_2D[i].size(); j++) 
-            cout << vect_2D[i][j] << " "; 
-        cout << endl; 
+        vect_2D[i]=split_string(new_input_line);
     } 
-    */
 
-    string i_j;
-    getline(cin, i_j);
-    vector<string> splits2 = split_string(i_j);
-    //cout<<i_j<<endl;
-
-
-    string m_n;
-    getline(cin, m_n);
-    vector<string> splits3 = split_string(m_n);
-
+    vector<vector<string>> vect_Index_2D(row); // array sequences
+    for(int i=0;i<row;i++){
+        getline(cin,new_input_line);
+        vect_Index_2D[i]=split_string(new_input_line);
+    }
     
-    cout<< vect_2D[stoi(splits2[0])][stoi(splits2[1])+1]<<endl;
-    cout<< vect_2D[stoi(splits3[0])][stoi(splits3[1])+1]<<endl;
-    //cout<<m_n<<endl;
+    int row_index;
+    int clon_index;
 
+    for(int i=0;i<row;i++){
+        row_index=stoi(vect_Index_2D[i][0]);
+        clon_index=stoi(vect_Index_2D[i][1])+1;
+        cout<< vect_2D[row_index][clon_index]<<endl;
 
+    }
 
     return 0;
 }
@@ -83,5 +73,6 @@ vector<string> split_string(string input_string) {
 
     return splits;
 }
+
 
 
